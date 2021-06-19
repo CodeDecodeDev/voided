@@ -1,0 +1,173 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Art/Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/Orbs.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Art/Platform.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Platform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_bloom = 0.1
+glow_blend_mode = 0
+
+[sub_resource type="PhysicsMaterial" id=2]
+bounce = 0.07
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 40, 10 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 38, 1 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 497.859, 10 )
+
+[node name="World" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+physics_material_override = SubResource( 2 )
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( 0, 70 )
+
+[node name="Platform2" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( 150, 50 )
+
+[node name="Platform3" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( 325.531, 50 )
+
+[node name="Platform4" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( 419.294, -9.43855 )
+
+[node name="Platform6" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( 483.855, -58.815 )
+
+[node name="Platform7" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( 371.855, -85.223 )
+
+[node name="Platform8" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( 296.012, -133.028 )
+
+[node name="Platform9" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( 397.518, -179.635 )
+
+[node name="Platform10" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( 464.841, -213.033 )
+
+[node name="Platform11" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( 495.709, -257.13 )
+
+[node name="Platform12" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( 387.986, -282.328 )
+
+[node name="Platform13" type="StaticBody2D" parent="Platforms" groups=[
+"ding",
+]]
+position = Vector2( 292.862, -309.732 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform13"]
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Platforms/Platform13"]
+modulate = Color( 0.835294, 0.352941, 0.607843, 1 )
+scale = Vector2( 4, 1 )
+texture = ExtResource( 3 )
+
+[node name="WinDetect" type="StaticBody2D" parent="Platforms/Platform13"]
+
+[node name="Collision" type="CollisionShape2D" parent="Platforms/Platform13/WinDetect"]
+position = Vector2( 0, -9.21317 )
+shape = SubResource( 4 )
+
+[node name="Guide" type="Node2D" parent="."]
+
+[node name="Movement" type="Label" parent="Guide"]
+margin_left = -114.268
+margin_top = 6.27996
+margin_right = 781.732
+margin_bottom = 86.28
+rect_scale = Vector2( 0.1, 0.1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Move With W,A,D"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Orbs" type="Label" parent="Guide"]
+margin_left = 190.977
+margin_top = -14.322
+margin_right = 1422.98
+margin_bottom = 65.678
+rect_scale = Vector2( 0.1, 0.1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Collect the orbs"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="Label" parent="Guide"]
+margin_left = 3.0
+margin_top = -0.125199
+margin_right = 1059.0
+margin_bottom = 79.8748
+rect_scale = Vector2( 0.1, 0.1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Press R to restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Orbs" type="Node2D" parent="."]
+
+[node name="Orbs" parent="Orbs" instance=ExtResource( 2 )]
+
+[node name="Orbs2" parent="Orbs" instance=ExtResource( 2 )]
+position = Vector2( 418.859, -34.586 )
+
+[node name="Orbs3" parent="Orbs" instance=ExtResource( 2 )]
+position = Vector2( 481.667, -81.3581 )
+
+[node name="Orbs4" parent="Orbs" instance=ExtResource( 2 )]
+position = Vector2( 370.75, -106.749 )
+
+[node name="Orbs5" parent="Orbs" instance=ExtResource( 2 )]
+position = Vector2( 295.469, -150.848 )
+
+[node name="Orbs6" parent="Orbs" instance=ExtResource( 2 )]
+position = Vector2( 393.023, -199.848 )
+
+[node name="Orbs7" parent="Orbs" instance=ExtResource( 2 )]
+position = Vector2( 484.107, -231.183 )
+
+[node name="Orbs8" parent="Orbs" instance=ExtResource( 2 )]
+position = Vector2( 509.591, -277.433 )
+
+[node name="Orbs9" parent="Orbs" instance=ExtResource( 2 )]
+position = Vector2( 371.314, -302.918 )
+
+[node name="DeathZone" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2( 212.132, 358.647 )
+shape = SubResource( 5 )
+
+[node name="CollisionPolygon2D2" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2( 212.132, -617.567 )
+shape = SubResource( 5 )
+
+[node name="CollisionPolygon2D3" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2( -280.2, -128.827 )
+rotation = -1.5708
+shape = SubResource( 5 )
+
+[node name="CollisionPolygon2D4" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2( 704.912, -128.827 )
+rotation = -1.5708
+shape = SubResource( 5 )

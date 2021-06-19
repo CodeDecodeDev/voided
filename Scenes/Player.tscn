@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Art/Player.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://Art/Font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Art/chime.ogg" type="AudioStream" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 11, 11 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Player" type="RigidBody2D"]
+script = ExtResource( 2 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+
+[node name="Camera" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.3, 0.3 )
+smoothing_enabled = true
+
+[node name="Label" type="Label" parent="Camera"]
+margin_left = -2.0
+margin_top = -4.0
+margin_right = 62.0
+margin_bottom = 76.0
+rect_scale = Vector2( 0.1, 0.1 )
+custom_fonts/font = ExtResource( 3 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Collision_Detect" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="Collision_Detect"]
+shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[connection signal="body_entered" from="Collision_Detect" to="." method="_on_Collision_Detect_body_entered"]
+[connection signal="body_exited" from="Collision_Detect" to="." method="_on_Collision_Detect_body_exited"]
